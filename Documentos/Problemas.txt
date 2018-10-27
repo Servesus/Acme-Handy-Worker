@@ -1,0 +1,40 @@
+1)
+social profile ---> entidad más (en UML ponerlo como composición para borrarse en cascada)
+priority ---> pattern en string
+
+atributo isSystem en box ---> ponerlo como nota (los que son del sistema no se pueden borrar)
+
+@Valid cuando es clase creada por nosotros (no tipo ya existente)
+
+
+2) 
+cliente se relaciona con tarea
+ticket ---> unico
+warranty ---> isFinal (si es borrador o no) --> nota --> mejor en modelo de dominio (Nota en conceptual)
+startDate --> Date solo
+category ---> nota UML (quien no tiene padre es categoría raíz)
+
+3)
+clase asociación (1 handy, 1 fix) ---> nota UML en domain, habrá que tener cuidado de que un mismo handy worker no esté asociado a más de un fixuptask
+separar comentarios de custom y handy worker (2 atributos)
+clase sin atributos --> Para conceptual sí, dominio no (no aporta información ninguna)
+relación 1..1 ---> todos atributos pueden estar en una de las 2 clases
+phase(UML) --> número para indicarle el orden (ordered en conceptual)
+
+
+4)
+finde: indicar en nota el tiempo que va estar en cache ---> en dominio si se le debe dar una solución ---> clase que representa la configuración del sistema (atributo último actulización)
+opcionalidad en atributos de finder
+nota para RF de los report y complaint
+
+
+5)
+Report asociado a la queja
+Hay que guardar el momento ---> suele estar relacionado con clase asociación
+report ---> atributo boolean Finalizado para ver si se puede modificar o no
+comentarios los puede realizar customer, referee o handy worker---> 3 atributos, nota UML, al menos uno de los tres debe estar
+
+
+6)
+
+
