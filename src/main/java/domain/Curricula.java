@@ -1,69 +1,74 @@
+
 package domain;
 
 import java.util.Collection;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-public class Curricula {
-	
-	private String ticker;
-	private PersonalRecord personalRecord;
-	private Collection<EducationalRecord> educationalRecord;
-	private Collection<ProfessionalRecord> professionalRecord;
-	private Collection<EndorserRecord> endorserRecord;
-	private Collection<MiscRecord> miscRecord;
-	
+@Entity
+@Access(AccessType.PROPERTY)
+public class Curricula extends DomainEntity {
+
+	private String							ticker;
+	private PersonalRecord					personalRecord;
+	private Collection<EducationalRecord>	educationalRecord;
+	private Collection<ProfessionalRecord>	professionalRecord;
+	private Collection<EndorserRecord>		endorserRecord;
+	private Collection<MiscRecord>			miscRecord;
+
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "^(\\d{6}-\\w{6})$")
+	@Pattern(regexp = "^(\\d{6})(-)([A-Z0-9] {6})$")
 	public String getTicker() {
-		return ticker;
+		return this.ticker;
 	}
-	public void setTicker(String ticker) {
+	public void setTicker(final String ticker) {
 		this.ticker = ticker;
 	}
 	@NotNull
 	@Valid
 	public PersonalRecord getPersonalRecord() {
-		return personalRecord;
+		return this.personalRecord;
 	}
-	public void setPersonalRecord(PersonalRecord personalRecord) {
+	public void setPersonalRecord(final PersonalRecord personalRecord) {
 		this.personalRecord = personalRecord;
 	}
 	@Valid
 	public Collection<EducationalRecord> getEducationalRecord() {
-		return educationalRecord;
+		return this.educationalRecord;
 	}
-	public void setEducationalRecord(Collection<EducationalRecord> educationalRecord) {
+	public void setEducationalRecord(final Collection<EducationalRecord> educationalRecord) {
 		this.educationalRecord = educationalRecord;
 	}
 	@Valid
 	public Collection<ProfessionalRecord> getProfessionalRecord() {
-		return professionalRecord;
+		return this.professionalRecord;
 	}
-	public void setProfessionalRecord(
-			Collection<ProfessionalRecord> professionalRecord) {
+	public void setProfessionalRecord(final Collection<ProfessionalRecord> professionalRecord) {
 		this.professionalRecord = professionalRecord;
 	}
 	@Valid
 	public Collection<EndorserRecord> getEndorserRecord() {
-		return endorserRecord;
+		return this.endorserRecord;
 	}
-	public void setEndorserRecord(Collection<EndorserRecord> endorserRecord) {
+	public void setEndorserRecord(final Collection<EndorserRecord> endorserRecord) {
 		this.endorserRecord = endorserRecord;
 	}
 	@Valid
 	public Collection<MiscRecord> getMiscRecord() {
-		return miscRecord;
+		return this.miscRecord;
 	}
-	public void setMiscRecord(Collection<MiscRecord> miscRecord) {
+	public void setMiscRecord(final Collection<MiscRecord> miscRecord) {
 		this.miscRecord = miscRecord;
 	}
-	
+
 }

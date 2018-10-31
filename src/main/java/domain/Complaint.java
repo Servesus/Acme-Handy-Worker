@@ -10,9 +10,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -30,6 +30,8 @@ public class Complaint extends DomainEntity {
 
 
 	@NotBlank
+	@Column(unique = true)
+	@Pattern(regexp = "^(\\d{6})(-)([A-Z0-9] {6})$")
 	public String getTicker() {
 		return this.ticker;
 	}
@@ -39,7 +41,6 @@ public class Complaint extends DomainEntity {
 		this.ticker = ticker;
 	}
 
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	public Date getMoment() {
 		return this.moment;
 	}

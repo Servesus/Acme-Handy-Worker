@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -34,11 +35,12 @@ public class Fix_up_Task extends DomainEntity {
 
 
 	@NotBlank
+	@Column(unique = true)
+	@Pattern(regexp = "^(\\d{6})(-)([A-Z0-9] {6})$")
 	public String getTicker() {
 		return this.ticker;
 	}
 
-	@Column(unique = true)
 	public void setTicker(final String ticker) {
 		this.ticker = ticker;
 	}

@@ -10,8 +10,6 @@ import javax.persistence.Entity;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 @Entity
 @Access(AccessType.PROPERTY)
 public class Finder extends DomainEntity {
@@ -47,7 +45,6 @@ public class Finder extends DomainEntity {
 		this.rangeFinish = rangeFinishRange;
 	}
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	public Date getDateStartRange() {
 		return this.dateStartRange;
 	}
@@ -56,7 +53,6 @@ public class Finder extends DomainEntity {
 		this.dateStartRange = dateStartRange;
 	}
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	public Date getDateFinishRange() {
 		return this.dateFinishRange;
 	}
