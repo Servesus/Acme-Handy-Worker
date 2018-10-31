@@ -8,9 +8,10 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 public abstract class Authority extends DomainEntity {
 
-	private final String	ADMIN		= "ADMIN";
-	private final String	CUSTOMER	= "CUSTOMER";
-	private final String	REVIEWER	= "REVIEWER";
+	private final String	ADMIN			= "ADMIN";
+	private final String	CUSTOMER		= "CUSTOMER";
+	private final String	HANDY_WORKER	= "HANDY_WORKER";
+	private final String	REFEREE			= "REFEREE";
 	private String			authority;
 
 
@@ -31,8 +32,12 @@ public abstract class Authority extends DomainEntity {
 		return this.CUSTOMER;
 	}
 
-	public String getREVIEWER() {
-		return this.REVIEWER;
+	public String getHANDY_WORKER() {
+		return this.HANDY_WORKER;
+	}
+
+	public String getREFEREE() {
+		return this.REFEREE;
 	}
 
 }
