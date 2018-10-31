@@ -1,23 +1,36 @@
 
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
+@Access(AccessType.PROPERTY)
 public class Fix_up_Task extends DomainEntity {
 
-	private String	ticker;
-	private Date	starDate;
-	private String	description;
-	private String	address;
-	private double	maxPrice;
-	private Date	estimatedDate;
+	private String					ticker;
+	private Date					starDate;
+	private String					description;
+	private String					address;
+	private double					maxPrice;
+	private Date					estimatedDate;
+
+	//Relationships:
+	private Collection<Application>	aplications;
+	private Collection<Complain>	complaints;
+	private Finder					finder;
+	private Warranty				warranty;
+	private Category				category;
 
 
 	@NotBlank
@@ -72,5 +85,53 @@ public class Fix_up_Task extends DomainEntity {
 	public void setEstimatedDate(final Date estimatedDate) {
 		this.estimatedDate = estimatedDate;
 	}
+	//Relationships:
 
+	@Valid
+	public Collection<Application> getAplications() {
+		return this.aplications;
+	}
+
+	public void setAplications(final Collection<Application> aplications) {
+		this.aplications = aplications;
+	}
+
+	@Valid
+	public Collection<Complain> getComplaints() {
+		return this.complaints;
+	}
+
+	public void setComplaints(final Collection<Complain> complaints) {
+		this.complaints = complaints;
+	}
+
+	@Valid
+	@NotNull
+	public Finder getFinder() {
+		return this.finder;
+	}
+
+	public void setFinder(final Finder finder) {
+		this.finder = finder;
+	}
+
+	@Valid
+	@NotNull
+	public Warranty getWarranty() {
+		return this.warranty;
+	}
+
+	public void setWarranty(final Warranty warranty) {
+		this.warranty = warranty;
+	}
+
+	@Valid
+	@NotNull
+	public Category getCategory() {
+		return this.category;
+	}
+
+	public void setCategory(final Category category) {
+		this.category = category;
+	}
 }
