@@ -3,6 +3,9 @@ package domain;
 
 import java.util.Date;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.Range;
 
 public class Configuration extends DomainEntity {
@@ -36,6 +39,21 @@ public class Configuration extends DomainEntity {
 
 	public void setLastUpdate(final Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
+	}
+
+
+	//Relationships
+	private Finder	finder;
+
+
+	@NotNull
+	@Valid
+	public Finder getFinder() {
+		return this.finder;
+	}
+
+	public void setFinder(final Finder finder) {
+		this.finder = finder;
 	}
 
 }

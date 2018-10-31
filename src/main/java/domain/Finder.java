@@ -1,8 +1,19 @@
 
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
+@Access(AccessType.PROPERTY)
 public class Finder extends DomainEntity {
 
 	private String	singleKeyWord;
@@ -35,7 +46,8 @@ public class Finder extends DomainEntity {
 	public void setRangeFinishRange(final Integer rangeFinishRange) {
 		this.rangeFinish = rangeFinishRange;
 	}
-
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	public Date getDateStartRange() {
 		return this.dateStartRange;
 	}
@@ -43,13 +55,59 @@ public class Finder extends DomainEntity {
 	public void setDateStartRange(final Date dateStartRange) {
 		this.dateStartRange = dateStartRange;
 	}
-
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	public Date getDateFinishRange() {
 		return this.dateFinishRange;
 	}
 
 	public void setDateFinishRange(final Date dateFinishRange) {
 		this.dateFinishRange = dateFinishRange;
+	}
+
+
+	//Relationships
+	private Configuration			configuration;
+	private Collection<Fix_up_Task>	fixUpTask;
+	private Collection<Warranty>	warranties;
+	private Collection<Category>	categories;
+
+
+	@NotNull
+	@Valid
+	public Configuration getConfiguration() {
+		return this.configuration;
+	}
+
+	public void setConfiguration(final Configuration configuration) {
+		this.configuration = configuration;
+	}
+
+	@Valid
+	public Collection<Fix_up_Task> getFixUpTask() {
+		return this.fixUpTask;
+	}
+
+	public void setFixUpTask(final Collection<Fix_up_Task> fixUpTask) {
+		this.fixUpTask = fixUpTask;
+	}
+
+	@Valid
+	public Collection<Warranty> getWarranties() {
+		return this.warranties;
+	}
+
+	public void setWarranties(final Collection<Warranty> warranties) {
+		this.warranties = warranties;
+	}
+
+	@Valid
+	public Collection<Category> getCategories() {
+		return this.categories;
+	}
+
+	public void setCategories(final Collection<Category> categories) {
+		this.categories = categories;
 	}
 
 }
