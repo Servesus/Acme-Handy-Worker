@@ -16,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Complain extends DomainEntity {
+public class Complaint extends DomainEntity {
 
 	private String					ticker;
 	private Date					moment;

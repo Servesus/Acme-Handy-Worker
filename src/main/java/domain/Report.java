@@ -65,7 +65,7 @@ public class Report extends DomainEntity {
 
 	//Relationships
 	private Collection<Note>		notes;
-	private Collection<Complain>	complaint;
+	private Collection<Complaint>	complaint;
 	private Collection<Referee>		referees;
 
 
@@ -75,7 +75,7 @@ public class Report extends DomainEntity {
 	}
 
 	@Valid
-	public Collection<Complain> getComplaint() {
+	public Collection<Complaint> getComplaint() {
 		return this.complaint;
 	}
 
@@ -89,7 +89,7 @@ public class Report extends DomainEntity {
 		this.notes = notes;
 	}
 
-	public void setComplaint(final Collection<Complain> complaint) {
+	public void setComplaint(final Collection<Complaint> complaint) {
 		this.complaint = complaint;
 	}
 

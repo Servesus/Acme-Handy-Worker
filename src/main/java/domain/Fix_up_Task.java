@@ -27,7 +27,7 @@ public class Fix_up_Task extends DomainEntity {
 
 	//Relationships:
 	private Collection<Application>	aplications;
-	private Collection<Complain>	complaints;
+	private Collection<Complaint>	complaints;
 	private Finder					finder;
 	private Warranty				warranty;
 	private Category				category;
@@ -97,11 +97,11 @@ public class Fix_up_Task extends DomainEntity {
 	}
 
 	@Valid
-	public Collection<Complain> getComplaints() {
+	public Collection<Complaint> getComplaints() {
 		return this.complaints;
 	}
 
-	public void setComplaints(final Collection<Complain> complaints) {
+	public void setComplaints(final Collection<Complaint> complaints) {
 		this.complaints = complaints;
 	}
 
