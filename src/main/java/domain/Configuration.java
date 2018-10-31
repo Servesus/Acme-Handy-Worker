@@ -33,6 +33,13 @@ public class Configuration extends DomainEntity {
 	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
+<<<<<<< HEAD
+=======
+
+	public void setLastUpdate(final Date lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+>>>>>>> 9a06eec7f885760f70305762d71de65f23905f7c
 
 	public void setLastUpdate(final Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
