@@ -10,6 +10,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+<<<<<<< HEAD
+=======
+import javax.validation.constraints.Pattern;
+>>>>>>> 5e6b048754ecdf9a796c7ae65a615d36e75f744b
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -27,18 +31,23 @@ public class Fix_up_Task extends DomainEntity {
 
 	//Relationships:
 	private Collection<Application>	aplications;
+<<<<<<< HEAD
 	private Collection<Complain>	complaints;
+=======
+	private Collection<Complaint>	complaints;
+>>>>>>> 5e6b048754ecdf9a796c7ae65a615d36e75f744b
 	private Finder					finder;
 	private Warranty				warranty;
 	private Category				category;
 
 
 	@NotBlank
+	@Column(unique = true)
+	@Pattern(regexp = "^(\\d{6})(-)([A-Z0-9] {6})$")
 	public String getTicker() {
 		return this.ticker;
 	}
 
-	@Column(unique = true)
 	public void setTicker(final String ticker) {
 		this.ticker = ticker;
 	}
@@ -97,6 +106,7 @@ public class Fix_up_Task extends DomainEntity {
 	}
 
 	@Valid
+<<<<<<< HEAD
 	public Collection<Complain> getComplaints() {
 		return this.complaints;
 	}
@@ -121,6 +131,32 @@ public class Fix_up_Task extends DomainEntity {
 		return this.warranty;
 	}
 
+=======
+	public Collection<Complaint> getComplaints() {
+		return this.complaints;
+	}
+
+	public void setComplaints(final Collection<Complaint> complaints) {
+		this.complaints = complaints;
+	}
+
+	@Valid
+	@NotNull
+	public Finder getFinder() {
+		return this.finder;
+	}
+
+	public void setFinder(final Finder finder) {
+		this.finder = finder;
+	}
+
+	@Valid
+	@NotNull
+	public Warranty getWarranty() {
+		return this.warranty;
+	}
+
+>>>>>>> 5e6b048754ecdf9a796c7ae65a615d36e75f744b
 	public void setWarranty(final Warranty warranty) {
 		this.warranty = warranty;
 	}

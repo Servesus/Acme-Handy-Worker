@@ -3,10 +3,18 @@ package domain;
 
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Note extends DomainEntity {
 
+	//Attributes
 	private String	author;
 	private Date	moment;
 	private String	authorComment;
@@ -14,11 +22,13 @@ public class Note extends DomainEntity {
 	private String	customerComment;
 
 
+	//Getters and setters
 	@NotBlank
 	public String getAuthor() {
 		return this.author;
 	}
 
+	@NotNull
 	public Date getMoment() {
 		return this.moment;
 	}

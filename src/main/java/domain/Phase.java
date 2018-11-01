@@ -3,11 +3,16 @@ package domain;
 
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
+@Access(AccessType.PROPERTY)
 public class Phase extends DomainEntity {
 
 	//Attribute
@@ -34,7 +39,7 @@ public class Phase extends DomainEntity {
 	public void setDescription(final String description) {
 		this.description = description;
 	}
-
+	@NotNull
 	public Date getStartMoment() {
 		return this.startMoment;
 	}
@@ -42,7 +47,7 @@ public class Phase extends DomainEntity {
 	public void setStartMoment(final Date startMoment) {
 		this.startMoment = startMoment;
 	}
-
+	@NotNull
 	public Date getFinishMoment() {
 		return this.finishMoment;
 	}
@@ -58,4 +63,20 @@ public class Phase extends DomainEntity {
 	public void setNumber(final int number) {
 		this.number = number;
 	}
+
+
+	//Relationships
+	private Fix_up_Task	fixUpTask;
+
+
+	@NotNull
+	@Valid
+	public Fix_up_Task getFixUpTask() {
+		return this.fixUpTask;
+	}
+
+	public void setFixUpTask(final Fix_up_Task fixUpTask) {
+		this.fixUpTask = fixUpTask;
+	}
+
 }

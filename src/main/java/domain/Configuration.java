@@ -3,8 +3,16 @@ package domain;
 
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.Range;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Configuration extends DomainEntity {
 
 	//Attributes
@@ -36,6 +44,21 @@ public class Configuration extends DomainEntity {
 
 	public void setLastUpdate(final Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
+	}
+
+
+	//Relationships
+	private Finder	finder;
+
+
+	@NotNull
+	@Valid
+	public Finder getFinder() {
+		return this.finder;
+	}
+
+	public void setFinder(final Finder finder) {
+		this.finder = finder;
 	}
 
 }

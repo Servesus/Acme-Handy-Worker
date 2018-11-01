@@ -4,25 +4,29 @@ package domain;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
+@Access(AccessType.PROPERTY)
 public class Application extends DomainEntity {
 
-	private Date				moment;
-	private double				price;
-	private Collection<String>	comments;
-	private String				status;
-	private Collection<String>	customerComments;
-	private Collection<String>	hwComments;
+	private Date					moment;
+	private double					price;
+	private Collection<String>		comments;
+	private String					status;
+	private Collection<String>		customerComments;
+	private Collection<String>		hwComments;
+	private HandyWorker				handyWorker;
+	private Collection<Fix_up_Task>	fixUpTasks;
 
 
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -70,6 +74,25 @@ public class Application extends DomainEntity {
 
 	public void setHwComments(final Collection<String> hwComments) {
 		this.hwComments = hwComments;
+	}
+
+	@Valid
+	@NotNull
+	public HandyWorker getHandyWorker() {
+		return this.handyWorker;
+	}
+
+	public void setHandyWorker(final HandyWorker handyWorker) {
+		this.handyWorker = handyWorker;
+	}
+
+	@Valid
+	public Collection<Fix_up_Task> getFixUpTasks() {
+		return this.fixUpTasks;
+	}
+
+	public void setFixUpTasks(final Collection<Fix_up_Task> fixUpTasks) {
+		this.fixUpTasks = fixUpTasks;
 	}
 
 }

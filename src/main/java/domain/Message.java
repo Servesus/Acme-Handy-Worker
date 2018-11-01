@@ -1,23 +1,28 @@
 
 package domain;
 
-import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Message extends DomainEntity {
 
 	//Attributes
-	private Date				sendDate;
-	private Actor				recipient;
-	private Actor				sender;
-	private String				subject;
-	private String				body;
-	private Collection<String>	priority;
+	private Date	sendDate;
+	private Actor	recipient;
+	private Actor	sender;
+	private String	subject;
+	private String	body;
+	private int		priority;
 
 
 	//Getters and Setters
@@ -26,10 +31,10 @@ public class Message extends DomainEntity {
 		return this.sendDate;
 	}
 
-	public void setSendDate() {
-		final Date date = new Date();
-		this.sendDate = date;
+	public void setSendDate(final Date sendDate) {
+		this.sendDate = sendDate;
 	}
+	@NotNull
 	@Valid
 	public Actor getRecipient() {
 		return this.recipient;
@@ -38,6 +43,7 @@ public class Message extends DomainEntity {
 	public void setRecipient(final Actor recipient) {
 		this.recipient = recipient;
 	}
+	@NotNull
 	@Valid
 	public Actor getSender() {
 		return this.sender;
@@ -63,11 +69,12 @@ public class Message extends DomainEntity {
 		this.body = body;
 	}
 
-	public Collection<String> getPriority() {
+	@Range(min = 0, max = 3)
+	public int getPriority() {
 		return this.priority;
 	}
 
-	public void setPriority(final Collection<String> priority) {
+	public void setPriority(final int priority) {
 		this.priority = priority;
 	}
 
